@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+</head>
+<body>
+
+<form action="demo_form.asp">
+  Select a file: <input type="file" name="img" id="files">
+  <input type="submit">
+</form>
+
+<script src="fileutil.js"></script>
+<script>
+	
+function handleFileSelect(evt) {
+    var files = evt.target.files; // FileList object
+
+    // files is a FileList of File objects. List some properties.
+	console.log(evt.target.files);
+    var output = [];
+    var f;
+	f  = files[0];
+
+	console.log(FileUtils.getFileProperties(f));
+	FileUtils.getAudioOrVideoDuration(f,function(err,result){
+		if(err){
+			console.log('Error:');
+			console.log(err);
+		}else{
+			console.log('Result:'+result);
+		}
+		
+	});
+
+
+}
+
+  document.getElementById('files').addEventListener('change', handleFileSelect, false);	
+</script>
+</body>
+</html>
+

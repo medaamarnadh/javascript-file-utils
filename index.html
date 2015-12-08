@@ -10,9 +10,20 @@
   <input type="submit">
 </form>
 
+<input type="button" id="playVideo" value="PlayVideo">
+
+
+<video id="videoElement" controls autoplay>
+
+</video>
+<button id="snapShotButton">Take Snapshot</button>
+<button id="downloadSnapShot">Download Snapshot</button>
+
+<image id="image"></image>
+
 <script src="fileutil.js"></script>
 <script>
-	
+
 function handleFileSelect(evt) {
     var files = evt.target.files; // FileList object
 
@@ -30,13 +41,46 @@ function handleFileSelect(evt) {
 		}else{
 			console.log('Result:'+result);
 		}
-		
+
 	});
 
 
 }
 
-  document.getElementById('files').addEventListener('change', handleFileSelect, false);	
+var playVideoFile = function(evt){
+	'use strict';
+
+    var videoElement = document.getElementById('videoElement');
+    var videoFile = document.getElementById('files').files[0];
+    console.log(document.getElementById('files').files[0]);
+    FileUtils.playVideoOrAudioFile(videoFile,videoElement);
+
+};
+
+
+var takeSnapShot = function(evt){
+  'use strict';
+
+    var videoElement = document.getElementById('videoElement');
+  FileUtils.getVideoSanpShot(videoElement,{},function(dataurl){
+        console.log(dataurl);
+        var image = document.getElementById('image');
+        console.log(dataurl);
+        image.src = dataurl;
+    });
+
+};
+
+var downloadSnapShot = function(){
+  'use strict';
+    var videoFile = document.getElementById('videoElement');
+    FileUtils.downloadSanpshot(videoFile);
+};
+
+  document.getElementById('files').addEventListener('change', handleFileSelect, false);
+  document.getElementById('playVideo').addEventListener('click',playVideoFile,false);
+  document.getElementById('snapShotButton').addEventListener('click',takeSnapShot,false);
+  document.getElementById('downloadSnapShot').addEventListener('click',downloadSnapShot,false);
 </script>
 </body>
 </html>

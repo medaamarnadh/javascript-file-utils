@@ -14,7 +14,7 @@ properties={
 	size:file.size,
 	type:file.type
 	
-} 
+};
 
 return properties;
 
@@ -45,6 +45,64 @@ try{
 }
 
 
+
+ }
+
+
+FileUtils.__proto__.getVideoSanpShot = function (file, options, callback) {
+	'use strict';
+
+	var canvas
+		, canvasContext
+		, img;
+
+		if(!(options.canvas || options.image)){
+			canvas = document.createElement('canvas');
+				canvas.width = 400;
+				canvas.height = 300;
+			canvasContext = canvas.getContext('2d');
+		}
+
+
+	if(options.canvas){
+		canvas = options.canvas;
+		canvasContext = options.getContext('2d');
+	}
+
+  canvasContext.fillRect(0,0,canvas.width,canvas.height);
+  canvasContext.drawImage(file,0,0,canvas.width,canvas.height);
+
+    callback(canvas.toDataURL());
+
+};
+
+FileUtils.__proto__.downloadSanpshot = function(file){
+	var a = document.createElement('a')
+		, canvas;
+
+	canvas = document.createElement('canvas');
+	canvas.width = 400;
+	canvas.height = 300;
+	canvasContext = canvas.getContext('2d');
+
+	canvasContext.fillRect(0,0,canvas.width,canvas.height);
+	canvasContext.drawImage(file,0,0,canvas.width,canvas.height);
+	a.href = canvas.toDataURL();
+	a.download = true;
+	a.click();
+	delete a;
+
+};
+
+
+FileUtils.__proto__.playVideoOrAudioFile = function(file,videoElement){
+  'use strict';
+
+  if( (file.type.split('/')[0]==='audio') ||  (file.type.split('/')[0]==='video') ){
+    videoElement.src = URL.createObjectURL(file);
+  }else{
+    throw 'only audio or video files allowed';
+  }
 
 }
 

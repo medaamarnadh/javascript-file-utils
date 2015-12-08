@@ -26,3 +26,40 @@ It has two utility functions now
 	        });
 	The out put in the console will be    Result:2.037551
 Take a look at the example which is given then you will understand it better
+
+# 3)downloadSnapshot
+			Used to download a snapshot from currently playing video .
+				Example
+					FileUtils.downloadSnapshot(videoElement)
+					
+# 4)getVideoSnapshot
+      Used to take a snap shot in the form of base64 format . 
+      You can directly put the result into image tag src attribute 
+        Example
+          var takeSnapShot = function(evt){
+            'use strict';          
+              var videoElement = document.getElementById('videoElement');
+            FileUtils.getVideoSnapshot(videoElement,{},function(dataurl){
+                  console.log(dataurl);
+                  var image = document.getElementById('image');
+                  console.log(dataurl);
+                  image.src = dataurl;
+              });
+          
+          };
+          
+# 5)playVideoFile 
+      Used to play the uploaded video file. We just need to send two arguments .One is video file another one is video element.
+        Example          
+          var playVideoFile = function(evt){
+	            'use strict';
+                var videoElement = document.getElementById('videoElement');
+                var videoFile = document.getElementById('files').files[0];
+                console.log(document.getElementById('files').files[0]);
+                FileUtils.playVideoOrAudioFile(videoFile,videoElement);
+          };
+
+Take a look at the index.html file for example.
+
+Note:To make index.html file works fine .Please upload a video file as a first step.
+          

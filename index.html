@@ -62,7 +62,7 @@ var takeSnapShot = function(evt){
   'use strict';
 
     var videoElement = document.getElementById('videoElement');
-  FileUtils.getVideoSanpShot(videoElement,{},function(dataurl){
+  FileUtils.getVideoSnapshot(videoElement,{},function(dataurl){
         console.log(dataurl);
         var image = document.getElementById('image');
         console.log(dataurl);
@@ -74,7 +74,7 @@ var takeSnapShot = function(evt){
 var downloadSnapShot = function(){
   'use strict';
     var videoFile = document.getElementById('videoElement');
-    FileUtils.downloadSanpshot(videoFile);
+    FileUtils.downloadSnapshot(videoFile);
 };
 
   document.getElementById('files').addEventListener('change', handleFileSelect, false);

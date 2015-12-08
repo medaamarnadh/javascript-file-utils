@@ -49,7 +49,7 @@ try{
  }
 
 
-FileUtils.__proto__.getVideoSanpShot = function (file, options, callback) {
+FileUtils.__proto__.getVideoSnapshot = function (file, options, callback) {
 	'use strict';
 
 	var canvas
@@ -76,7 +76,7 @@ FileUtils.__proto__.getVideoSanpShot = function (file, options, callback) {
 
 };
 
-FileUtils.__proto__.downloadSanpshot = function(file){
+FileUtils.__proto__.downloadSnapshot = function(file){
 	var a = document.createElement('a')
 		, canvas;
 

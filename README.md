@@ -1,6 +1,12 @@
 # javascript-file-utils
 This is a utility plugin which facilitates some utility function that are using in daily basis .
-It has two utility functions now 
+It has two utility functions now
+ 
+ 
+ To install this library from bower components .
+  use bower install javascript-file-utils
+  
+  
 
 # 1) getFileProperties 
        Used to get the file properties which we have uploaded for example 

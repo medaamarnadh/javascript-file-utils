@@ -1,0 +1,12 @@
+{
+  "name": "javascript-file-utils",
+  "version": "0.0.1",
+  "homepage": "https://github.com/medaamarnadh/javascript-file-utils",
+  "authors": [
+    "medaamarnadh <medaamarnadh@gmail.com>"
+  ],
+  "description": "This is usefull for javascript file utilites that includes simple functionalities which are using in so many web application in HTML5",
+  "main": "fileutil.js",
+  "keywords":['javascript file uitls','take video snapshot ','download video snapshot','get file properties'],
+  "license": "MIT"
+}
